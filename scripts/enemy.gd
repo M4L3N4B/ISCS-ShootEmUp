@@ -90,13 +90,10 @@ func move(delta: float) -> void:
 func move_to_screen(delta: float) -> void:
 	if position.x < border_margins["left"]:
 		strafe(1, delta)
-		position.x = max(position.x, border_margins["left"])
 	elif border_margins["right"] < position.x:
 		strafe(-1, delta)
-		position.x = min(position.x, border_margins["right"])
 	elif position.y < border_margins["top"]:
 		advance(delta)
-		position.y = max(position.y, border_margins["top"])
 
 
 func strafe(direction: int, delta: float) -> void:
