@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://cor53wn0x3t2v"]
 
+[ext_resource type="Texture2D" uid="uid://bhriopcof4dte" path="res://assets/SpaceRage/BG.png" id="1_2q6dc"]
+
 [node name="Level" type="Node2D" unique_id=1582846004]
+
+[node name="Scroller" type="Parallax2D" parent="." unique_id=919304496]
+repeat_size = Vector2(0, 800)
+autoscroll = Vector2(0, 50)
+
+[node name="Background" type="Sprite2D" parent="Scroller" unique_id=806351808]
+position = Vector2(350, 400)
+texture = ExtResource("1_2q6dc")
