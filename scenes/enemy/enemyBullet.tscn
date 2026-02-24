@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://qpithjxa3mqo"]
+
+[ext_resource type="Texture2D" uid="uid://bgj3qqarht36q" path="res://assets/SpaceRage/FX/vulcan_1.png" id="1_e8hw6"]
+[ext_resource type="Script" uid="uid://bsj5eayyhphu" path="res://scripts/enemy_bullet.gd" id="1_ocui6"]
+[ext_resource type="Texture2D" uid="uid://c3671q28rja0" path="res://assets/SpaceRage/FX/vulcan_2.png" id="2_7q8nd"]
+[ext_resource type="Texture2D" uid="uid://by5gbpknn465c" path="res://assets/SpaceRage/FX/vulcan_3.png" id="3_7chd7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sj72o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e8hw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7chd7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7q8nd")
+}],
+"loop": true,
+"name": &"flicker",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s3oxe"]
+radius = 3.0
+height = 14.0
+
+[node name="EnemyBullet" type="Area2D" unique_id=1357506711]
+script = ExtResource("1_ocui6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2056301351]
+texture_filter = 1
+rotation = 3.1415927
+sprite_frames = SubResource("SpriteFrames_sj72o")
+animation = &"flicker"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1407764317]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_s3oxe")

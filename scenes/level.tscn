@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cor53wn0x3t2v"]
 
 [ext_resource type="Texture2D" uid="uid://bhriopcof4dte" path="res://assets/SpaceRage/BG.png" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://drpd3p6ulghka" path="res://scenes/enemy/enemy.tscn" id="2_w7c3h"]
 
 [node name="Level" type="Node2D" unique_id=1582846004]
 
@@ -11,3 +12,6 @@ autoscroll = Vector2(0, 50)
 [node name="Background" type="Sprite2D" parent="Scroller" unique_id=806351808]
 position = Vector2(350, 400)
 texture = ExtResource("1_2q6dc")
+
+[node name="Enemy" parent="." unique_id=2141922867 instance=ExtResource("2_w7c3h")]
+position = Vector2(211, 160)

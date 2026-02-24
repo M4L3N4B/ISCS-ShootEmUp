@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://drpd3p6ulghka"]
+
+[ext_resource type="Script" uid="uid://dv2obckkw0pqy" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="PackedScene" uid="uid://qpithjxa3mqo" path="res://scenes/enemy/enemyBullet.tscn" id="2_dxjon"]
+[ext_resource type="Texture2D" uid="uid://bdo1qsyfuowde" path="res://assets/SpaceRage/Enemies/enemy_2_r_m.png" id="2_md0e3"]
+[ext_resource type="Texture2D" uid="uid://d34arfhw1lcdt" path="res://assets/SpaceRage/Explosions/explosion_1_01.png" id="2_shcg2"]
+[ext_resource type="Texture2D" uid="uid://b5wys70clsa3r" path="res://assets/SpaceRage/Enemies/enemy_2_r_l2.png" id="2_xwavj"]
+[ext_resource type="Texture2D" uid="uid://bpjbxfr3q581p" path="res://assets/SpaceRage/Explosions/explosion_1_02.png" id="3_ile5s"]
+[ext_resource type="Texture2D" uid="uid://bw58j8cvek7yy" path="res://assets/SpaceRage/Enemies/enemy_2_r_l1.png" id="3_nenq2"]
+[ext_resource type="Texture2D" uid="uid://cgm1bxuyj6208" path="res://assets/SpaceRage/Explosions/explosion_1_03.png" id="4_1x4g4"]
+[ext_resource type="Texture2D" uid="uid://cm0ycqka5mmyg" path="res://assets/SpaceRage/Enemies/enemy_2_r_r1.png" id="4_md484"]
+[ext_resource type="Texture2D" uid="uid://d05u3xbpnbmpn" path="res://assets/SpaceRage/Explosions/explosion_1_04.png" id="5_2pwtc"]
+[ext_resource type="Texture2D" uid="uid://juslcsq5ym8" path="res://assets/SpaceRage/Enemies/enemy_2_r_r2.png" id="5_ipns3"]
+[ext_resource type="Texture2D" uid="uid://cxowppn1cm3ir" path="res://assets/SpaceRage/Explosions/explosion_1_05.png" id="6_rogs8"]
+[ext_resource type="Texture2D" uid="uid://dah1avkrbv85q" path="res://assets/SpaceRage/Explosions/explosion_1_06.png" id="7_wrm80"]
+[ext_resource type="Texture2D" uid="uid://517junmyu8ry" path="res://assets/SpaceRage/Explosions/explosion_1_07.png" id="8_6awcb"]
+[ext_resource type="Texture2D" uid="uid://g5ofuq2cqmqr" path="res://assets/SpaceRage/Explosions/explosion_1_08.png" id="9_wjec0"]
+[ext_resource type="Texture2D" uid="uid://dt4pwusfloay2" path="res://assets/SpaceRage/Explosions/explosion_1_09.png" id="10_i4rgx"]
+[ext_resource type="Texture2D" uid="uid://dpge5sghnyrhs" path="res://assets/SpaceRage/Explosions/explosion_1_10.png" id="11_2mchx"]
+[ext_resource type="Texture2D" uid="uid://dd55sefq85ooh" path="res://assets/SpaceRage/Explosions/explosion_1_11.png" id="12_t3vcr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ra3w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_shcg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ile5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1x4g4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2pwtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rogs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wrm80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6awcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wjec0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i4rgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2mchx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t3vcr")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nenq2")
+}],
+"loop": false,
+"name": &"full_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ipns3")
+}],
+"loop": false,
+"name": &"full_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xwavj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nenq2")
+}],
+"loop": false,
+"name": &"strafe_left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_md484")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ipns3")
+}],
+"loop": false,
+"name": &"strafe_right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_md0e3")
+}],
+"loop": false,
+"name": &"straight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xwavj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_md0e3")
+}],
+"loop": false,
+"name": &"straighten_from_left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_md484")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_md0e3")
+}],
+"loop": false,
+"name": &"straighten_from_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwavj"]
+radius = 25.0
+height = 60.0
+
+[node name="Enemy" type="Area2D" unique_id=2141922867]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_7p1mj")
+bullet = ExtResource("2_dxjon")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=900808604]
+sprite_frames = SubResource("SpriteFrames_4ra3w")
+animation = &"straight"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847528301]
+position = Vector2(7.6293945e-06, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xwavj")
+
+[node name="Timers" type="Node" parent="." unique_id=424287693]
+
+[node name="MovementTimer" type="Timer" parent="Timers" unique_id=413137254]
+one_shot = true
+
+[node name="ShootTimer" type="Timer" parent="Timers" unique_id=1562965716]
+one_shot = true
+
+[node name="BulletMarkers" type="Node2D" parent="." unique_id=828716083]
+
+[node name="LeftMarker" type="Marker2D" parent="BulletMarkers" unique_id=1380738963]
+position = Vector2(7.3333282, 19.333332)
+scale = Vector2(1.5, 1.5)
+
+[node name="RightMarker" type="Marker2D" parent="BulletMarkers" unique_id=1866639189]
+position = Vector2(-7.333336, 19.333332)
+scale = Vector2(1.5, 1.5)
+
+[connection signal="timeout" from="Timers/MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="Timers/ShootTimer" to="." method="_on_shoot_timer_timeout"]
