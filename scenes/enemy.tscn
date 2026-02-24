@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://drpd3p6ulghka"]
+
+[ext_resource type="Script" uid="uid://dv2obckkw0pqy" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Texture2D" uid="uid://bdo1qsyfuowde" path="res://assets/SpaceRage/Enemies/enemy_2_r_m.png" id="2_md0e3"]
+[ext_resource type="Texture2D" uid="uid://b5wys70clsa3r" path="res://assets/SpaceRage/Enemies/enemy_2_r_l2.png" id="2_xwavj"]
+[ext_resource type="Texture2D" uid="uid://bw58j8cvek7yy" path="res://assets/SpaceRage/Enemies/enemy_2_r_l1.png" id="3_nenq2"]
+[ext_resource type="Texture2D" uid="uid://cm0ycqka5mmyg" path="res://assets/SpaceRage/Enemies/enemy_2_r_r1.png" id="4_md484"]
+[ext_resource type="Texture2D" uid="uid://juslcsq5ym8" path="res://assets/SpaceRage/Enemies/enemy_2_r_r2.png" id="5_ipns3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ra3w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xwavj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nenq2")
+}],
+"loop": false,
+"name": &"strafe_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_md484")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ipns3")
+}],
+"loop": false,
+"name": &"strafe_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_md0e3")
+}],
+"loop": true,
+"name": &"straight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nenq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xwavj")
+}],
+"loop": false,
+"name": &"straighten_from_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ipns3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_md484")
+}],
+"loop": false,
+"name": &"straighten_from_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwavj"]
+radius = 25.0
+height = 60.0
+
+[node name="Enemy" type="AnimatableBody2D" unique_id=1663395847]
+texture_filter = 1
+script = ExtResource("1_7p1mj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=900808604]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_4ra3w")
+animation = &"straighten_from_right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847528301]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xwavj")
