@@ -1,3 +1,5 @@
+# Source: https://www.youtube.com/watch?v=7GLBk9d-tLk
+
 extends Area2D
 
 @onready var anim_sprite = $AnimatedSprite2D

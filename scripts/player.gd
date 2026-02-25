@@ -1,3 +1,5 @@
+# Source: https://www.youtube.com/watch?v=oHQZQLBSmWI
+
 extends CharacterBody2D
 
 @onready var anim_sprite = $AnimatedSprite2D
