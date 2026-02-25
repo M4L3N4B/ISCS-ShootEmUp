@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bhriopcof4dte" path="res://assets/SpaceRage/BG.png" id="1_2q6dc"]
 [ext_resource type="PackedScene" uid="uid://drpd3p6ulghka" path="res://scenes/enemy/enemy.tscn" id="2_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://c8emdavkhvib6" path="res://scenes/player.tscn" id="2_w8frs"]
-[ext_resource type="Script" uid="uid://bh0fkbf7fpmc7" path="res://scripts/player.gd" id="3_mx8sn"]
 
 [node name="Level" type="Node2D" unique_id=1582846004]
 
@@ -17,7 +16,6 @@ texture = ExtResource("1_2q6dc")
 
 [node name="Player" parent="." unique_id=238055065 instance=ExtResource("2_w8frs")]
 position = Vector2(360, 716)
-script = ExtResource("3_mx8sn")
 
 [node name="Enemy" parent="." unique_id=2141922867 instance=ExtResource("2_w7c3h")]
 position = Vector2(181.99998, -96)

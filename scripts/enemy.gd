@@ -1,6 +1,7 @@
 extends Area2D
 
 
+@onready var collider := $CollisionShape2D
 @onready var anim_sprite = $AnimatedSprite2D
 @onready var mvmt_timer = $Timers/MovementTimer
 @onready var shoot_timer = $Timers/ShootTimer
@@ -96,13 +97,15 @@ func move_to_screen(delta: float) -> void:
 		advance(delta)
 
 
+# Doesn't let the enemy move outside margins once it's already inside
 func strafe(direction: int, delta: float) -> void:
-	match direction:
-		-1 : position.x -= speeds.x * delta
-		1  : position.x += speeds.x * delta
-		
+	var next_position = position.x + (direction * speeds.x * delta)
+	if is_within_bounds():
+		position.x = clamp(next_position, border_margins["left"], border_margins["right"])
+	else:
+		position.x = next_position
 
-func advance(delta) -> void:
+func advance(delta: float) -> void:
 	position.y += speeds.y * delta
 
 
@@ -138,8 +141,10 @@ func shoot() -> void:
 func take_damage(damage: int) -> void:
 	health -= damage
 
+
 func explode() -> void:
 	anim_sprite.play("explode")
+	collider.set_deferred("disabled", true)
 	await anim_sprite.animation_finished
 	queue_free()
 
@@ -155,11 +160,15 @@ func set_timers() -> void:
 
 
 func _on_shoot_timer_timeout() -> void:
-	shoot()
+	if not destroyed:
+		shoot()
 
 
 # Alternates between aiming and moving
 func _on_movement_timer_timeout() -> void:
+	if destroyed:
+		return
+	
 	if current_motion in mvmt_types:
 		current_motion = "aim"
 	else:
