@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dsvjq6xpa6rxh"]
+
+[ext_resource type="Texture2D" uid="uid://dm6l7b0dm8nxn" path="res://assets/SpaceRage/FX/plasma_1.png" id="1_7fy7u"]
+[ext_resource type="Script" uid="uid://crdfgae3pctwk" path="res://scripts/player_bullet.gd" id="1_7jfqc"]
+[ext_resource type="Texture2D" uid="uid://ci65p7qoc4bax" path="res://assets/SpaceRage/FX/plasma_2.png" id="2_7jfqc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rqvlm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7fy7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7jfqc")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3yst"]
+size = Vector2(6, 20)
+
+[node name="Area2D" type="Area2D" unique_id=699450745]
+script = ExtResource("1_7jfqc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=995603338]
+sprite_frames = SubResource("SpriteFrames_rqvlm")
+animation = &"fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=114989669]
+shape = SubResource("RectangleShape2D_g3yst")
