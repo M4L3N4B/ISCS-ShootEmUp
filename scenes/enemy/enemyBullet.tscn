@@ -52,7 +52,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_tpoxu")
 }],
-"loop": true,
+"loop": false,
 "name": &"explode",
 "speed": 10.0
 }, {

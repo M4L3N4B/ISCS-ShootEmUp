@@ -13,6 +13,7 @@ const SPEED = 300.0
 var last_direction = 0
 var health = 100
 var canShoot = true
+var destroyed := false
 
 # The functions are arranged as follows:
 # 1. Movement-related
@@ -22,7 +23,13 @@ var canShoot = true
 
 # Movement-related Functions
 
+func _ready() -> void:
+	collision_layer = 1
+	collision_mask = 0
+
 func _physics_process(_delta: float) -> void:
+	if destroyed:
+		return
 	var movement = Vector2.ZERO
 	
 	if Input.is_action_pressed("Up"):
@@ -64,16 +71,20 @@ func _physics_process(_delta: float) -> void:
 # Collision-related Functions
 
 func take_damage(damage: int) -> void:
+	if destroyed:
+		return
 	health -= damage
 	is_health_zero()
 
 func is_health_zero() -> void:
-	if health == 0:
+	if health <= 0 and not destroyed:
+		destroyed = true
 		explode()
 		shoot_timer.stop()
 		canShoot = false
 
 func explode() -> void:
+	$CollisionShape2D.set_deferred("disabled", true)
 	anim_sprite.play("explode")
 	await anim_sprite.animation_finished
 	queue_free()
@@ -81,6 +92,8 @@ func explode() -> void:
 # Firing-related Functions
 
 func _process(_delta: float) -> void:
+	if destroyed:
+		return
 	if Input.is_action_pressed("Fire") and canShoot:
 		shoot()
 	

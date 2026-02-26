@@ -4,11 +4,26 @@ extends Area2D
 
 @onready var anim_sprite = $AnimatedSprite2D
 const SPEED = 200
+const DAMAGE = 25
 var top_border: float
+var hit := false
+
+func _ready():
+	collision_layer = 4
+	collision_mask = 2
+	area_entered.connect(_on_area_entered)
+	anim_sprite.play("fire")
 
 func _physics_process(delta: float):
 	top_border = 0
 	position.y -= delta * SPEED
-	anim_sprite.play("fire")
 	if position.y < top_border:
 		queue_free()
+
+func _on_area_entered(area: Area2D) -> void:
+	if hit:
+		return
+	hit = true
+	if area.has_method("take_damage"):
+		area.take_damage(DAMAGE)
+	queue_free()

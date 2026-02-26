@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bhriopcof4dte" path="res://assets/SpaceRage/BG.png" id="1_2q6dc"]
 [ext_resource type="PackedScene" uid="uid://drpd3p6ulghka" path="res://scenes/enemy/enemy.tscn" id="2_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://c8emdavkhvib6" path="res://scenes/player.tscn" id="2_w8frs"]
+[ext_resource type="Script" uid="uid://bxodkxudcrfpi" path="res://scripts/enemy_spawner.gd" id="3_mx8sn"]
 
 [node name="Level" type="Node2D" unique_id=1582846004]
 
@@ -17,8 +18,6 @@ texture = ExtResource("1_2q6dc")
 [node name="Player" parent="." unique_id=238055065 instance=ExtResource("2_w8frs")]
 position = Vector2(360, 716)
 
-[node name="Enemy" parent="." unique_id=2141922867 instance=ExtResource("2_w7c3h")]
-position = Vector2(181.99998, -96)
-
-[node name="Enemy2" parent="." unique_id=1131184739 instance=ExtResource("2_w7c3h")]
-position = Vector2(-61.999985, 105)
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=1819533206]
+script = ExtResource("3_mx8sn")
+enemy_scene = ExtResource("2_w7c3h")

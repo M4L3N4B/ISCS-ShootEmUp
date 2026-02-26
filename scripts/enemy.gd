@@ -11,6 +11,7 @@ extends Area2D
 @export var health := 50
 @export var margin_length := 25
 @export var speeds := Vector2(75, 100)
+@export var collision_damage := 25
 
 # Durations in seconds
 const mvmt_types := ["strafe_left", "strafe_right", "advance"]
@@ -30,6 +31,10 @@ var border_margins: Dictionary
 
 
 func _ready() -> void:
+	collision_layer = 2
+	collision_mask = 1
+	body_entered.connect(_on_body_entered)
+
 	var sprite_size = anim_sprite.sprite_frames.get_frame_texture("straight", 0).get_size() * scale
 	var true_margin_lengths = Vector2(margin_length, margin_length) + sprite_size/2
 	
@@ -130,6 +135,14 @@ func animate(motion: String) -> void:
 
 
 #  ==== Collision-Related ====
+
+func _on_body_entered(body: Node2D) -> void:
+	if destroyed:
+		return
+	if body.has_method("take_damage"):
+		body.take_damage(collision_damage)
+	health = 0
+
 
 func shoot() -> void:
 	for marker in bullet_markers.get_children():
