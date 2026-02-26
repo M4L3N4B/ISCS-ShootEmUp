@@ -1,11 +1,11 @@
-# Source: https://www.youtube.com/watch?v=oHQZQLBSmWI
-
 extends CharacterBody2D
 
 @onready var anim_sprite = $AnimatedSprite2D
 @onready var mvmt_timer = $Timers/MovementTimer
 @onready var shoot_timer = $Timers/ShootTimer
 @onready var bullet_markers = $BulletMarkers
+
+signal healthChanged
 
 var bullet = preload("res://scenes/playerbullet.tscn")
 
@@ -74,6 +74,7 @@ func take_damage(damage: int) -> void:
 	if destroyed:
 		return
 	health -= damage
+	healthChanged.emit()
 	is_health_zero()
 
 func is_health_zero() -> void:

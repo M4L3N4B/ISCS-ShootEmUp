@@ -3,9 +3,58 @@
 [ext_resource type="Texture2D" uid="uid://dm6l7b0dm8nxn" path="res://assets/SpaceRage/FX/plasma_1.png" id="1_7fy7u"]
 [ext_resource type="Script" uid="uid://crdfgae3pctwk" path="res://scripts/player_bullet.gd" id="1_7jfqc"]
 [ext_resource type="Texture2D" uid="uid://ci65p7qoc4bax" path="res://assets/SpaceRage/FX/plasma_2.png" id="2_7jfqc"]
+[ext_resource type="Texture2D" uid="uid://d34arfhw1lcdt" path="res://assets/SpaceRage/Explosions/explosion_1_01.png" id="2_ecu82"]
+[ext_resource type="Texture2D" uid="uid://bpjbxfr3q581p" path="res://assets/SpaceRage/Explosions/explosion_1_02.png" id="3_gylvj"]
+[ext_resource type="Texture2D" uid="uid://cgm1bxuyj6208" path="res://assets/SpaceRage/Explosions/explosion_1_03.png" id="4_hqjgj"]
+[ext_resource type="Texture2D" uid="uid://d05u3xbpnbmpn" path="res://assets/SpaceRage/Explosions/explosion_1_04.png" id="5_q38sg"]
+[ext_resource type="Texture2D" uid="uid://cxowppn1cm3ir" path="res://assets/SpaceRage/Explosions/explosion_1_05.png" id="6_yyofj"]
+[ext_resource type="Texture2D" uid="uid://dah1avkrbv85q" path="res://assets/SpaceRage/Explosions/explosion_1_06.png" id="7_nhr8v"]
+[ext_resource type="Texture2D" uid="uid://517junmyu8ry" path="res://assets/SpaceRage/Explosions/explosion_1_07.png" id="8_ggsaw"]
+[ext_resource type="Texture2D" uid="uid://g5ofuq2cqmqr" path="res://assets/SpaceRage/Explosions/explosion_1_08.png" id="9_7dw2p"]
+[ext_resource type="Texture2D" uid="uid://dt4pwusfloay2" path="res://assets/SpaceRage/Explosions/explosion_1_09.png" id="10_wshvn"]
+[ext_resource type="Texture2D" uid="uid://dpge5sghnyrhs" path="res://assets/SpaceRage/Explosions/explosion_1_10.png" id="11_2v3et"]
+[ext_resource type="Texture2D" uid="uid://dd55sefq85ooh" path="res://assets/SpaceRage/Explosions/explosion_1_11.png" id="12_un0lt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rqvlm"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ecu82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gylvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hqjgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q38sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yyofj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nhr8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ggsaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7dw2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wshvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2v3et")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_un0lt")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_7fy7u")
@@ -26,7 +75,7 @@ script = ExtResource("1_7jfqc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=995603338]
 sprite_frames = SubResource("SpriteFrames_rqvlm")
-animation = &"fire"
+animation = &"explode"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=114989669]
 shape = SubResource("RectangleShape2D_g3yst")

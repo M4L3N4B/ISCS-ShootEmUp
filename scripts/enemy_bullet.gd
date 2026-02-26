@@ -3,7 +3,7 @@ extends Area2D
 
 @onready var collider := $CollisionShape2D
 @onready var anim_sprite := $AnimatedSprite2D
-@export var speed := 200
+@export var speed := 300
 const DAMAGE := 10
 var bottom_border: float
 var exploded := false

@@ -1,9 +1,8 @@
-# Source: https://www.youtube.com/watch?v=7GLBk9d-tLk
-
 extends Area2D
 
 @onready var anim_sprite = $AnimatedSprite2D
-const SPEED = 200
+@onready var collider := $CollisionShape2D
+const SPEED = 300
 const DAMAGE = 25
 var top_border: float
 var hit := false
@@ -16,6 +15,8 @@ func _ready():
 
 func _physics_process(delta: float):
 	top_border = 0
+	if hit:
+		return
 	position.y -= delta * SPEED
 	if position.y < top_border:
 		queue_free()
@@ -26,4 +27,10 @@ func _on_area_entered(area: Area2D) -> void:
 	hit = true
 	if area.has_method("take_damage"):
 		area.take_damage(DAMAGE)
+	explode()
+	
+func explode():
+	anim_sprite.play("explode")
+	collider.set_deferred("disabled", true)
+	await anim_sprite.animation_finished
 	queue_free()

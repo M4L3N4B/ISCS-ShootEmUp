@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://drpd3p6ulghka" path="res://scenes/enemy/enemy.tscn" id="2_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://c8emdavkhvib6" path="res://scenes/player.tscn" id="2_w8frs"]
 [ext_resource type="Script" uid="uid://bxodkxudcrfpi" path="res://scripts/enemy_spawner.gd" id="3_mx8sn"]
+[ext_resource type="Script" uid="uid://bivvfufyu5l0v" path="res://scripts/progress_bar.gd" id="3_ppgk2"]
 
 [node name="Level" type="Node2D" unique_id=1582846004]
 
@@ -16,7 +17,21 @@ position = Vector2(350, 400)
 texture = ExtResource("1_2q6dc")
 
 [node name="Player" parent="." unique_id=238055065 instance=ExtResource("2_w8frs")]
-position = Vector2(360, 716)
+position = Vector2(344, 629)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=918283120 node_paths=PackedStringArray("player")]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 773.0
+offset_right = 700.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+script = ExtResource("3_ppgk2")
+player = NodePath("../Player")
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1819533206]
 script = ExtResource("3_mx8sn")
